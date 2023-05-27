@@ -8,9 +8,17 @@ dim(books)
 summary(books$average_rating)
 summary(books$text_reviews_count)
 
-
-
 colSums(is.na(books))
+
+# Check if missing values occur in the same rows across multiple variables
+missing_rows <- complete.cases(books$average_rating, books$num_pages)
+
+# Count the number of rows with missing values in the same rows
+missing_rows_count <- sum(!missing_rows)
+
+# Print the count of rows with missing values in the same rows
+missing_rows_count #all in the same row.
+
 
 colnames(books)
 
