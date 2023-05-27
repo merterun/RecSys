@@ -19,16 +19,15 @@ missing_rows_count <- sum(!missing_rows)
 # Print the count of rows with missing values in the same rows
 missing_rows_count #all in the same row.
 
+books <- na.omit(books)
 
-colnames(books)
+colSums(is.na(books))
 
 ggplot(books, aes(x = average_rating)) +
   geom_histogram(binwidth = 0.5, fill = "steelblue", color = "white") +
   labs(x = "Rating", y = "Count", title = "Distribution of Book Ratings")
 
 
-
-# Identify and handle missing values
-# For example, impute missing values using mean, median, or other suitable methods:
-books$review_count <- ifelse(is.na(books$review_count), mean(books$review_count, na.rm = TRUE), books$review_count)
-
+# Rename the "text_reviews_count" column to "reviews_count"
+books <- books %>%
+  rename(reviews_count = text_reviews_count)
