@@ -2,6 +2,14 @@ library(tidyverse)
 
 books <- read_csv("books.csv")
 
+# Check for parsing problems
+problems(books)
+
+# Remove rows with parsing issues
+books_cleaned <- books %>%
+  filter(!(row %in% c(3350, 4704, 5879, 8981)))
+
+
 glimpse(books)
 dim(books)
 
