@@ -9,12 +9,16 @@ summary(books$average_rating)
 summary(books$text_reviews_count)
 
 
-ggplot(books, aes(x = rating)) +
+
+colSums(is.na(books))
+
+colnames(books)
+
+ggplot(books, aes(x = average_rating)) +
   geom_histogram(binwidth = 0.5, fill = "steelblue", color = "white") +
   labs(x = "Rating", y = "Count", title = "Distribution of Book Ratings")
 
 
-colSums(is.na(books))
 
 # Identify and handle missing values
 # For example, impute missing values using mean, median, or other suitable methods:
