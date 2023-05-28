@@ -6,9 +6,8 @@ books <- read_csv("books.csv")
 problems(books)
 
 # Remove rows with parsing issues
-books_cleaned <- books %>%
-  filter(!(row %in% c(3350, 4704, 5879, 8981)))
-
+books<- books %>%
+  filter(!(row_number() %in% c(3350, 4704, 5879, 8981)))
 
 glimpse(books)
 dim(books)
@@ -39,3 +38,4 @@ ggplot(books, aes(x = average_rating)) +
 # Rename the "text_reviews_count" column to "reviews_count"
 books <- books %>%
   rename(reviews_count = text_reviews_count)
+
