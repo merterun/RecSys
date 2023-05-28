@@ -20,10 +20,3 @@ processed_text <- books %>%
 
 # Perform sentiment analysis
 lexicon <- tidytext::get_sentiments("afinn")  # Load AFINN sentiment lexicon
-
-sentiment_scores <- processed_text %>%
-  unnest_tokens(word, review_text) %>%  # Tokenize the text
-  inner_join(lexicon, by = "word") %>%  # Inner join with sentiment lexicon
-  group_by(bookID) %>%
-  summarise(sentiment = sum(value))
-
